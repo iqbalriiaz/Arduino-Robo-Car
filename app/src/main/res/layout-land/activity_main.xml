@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/controller_bg"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <soup.neumorphism.NeumorphCardView
+                style="@style/Widget.Neumorph.CardView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:neumorph_shadowColorDark="@color/white"
+                app:neumorph_shadowColorLight="@color/white"
+                app:neumorph_shapeType="flat">
+
+                <TextView
+                    android:id="@+id/connectionStatId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No Device Connected"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </soup.neumorphism.NeumorphCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/buttonConnect"
+                android:background="@drawable/bg_circular"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_bluetooth_24dp"
+                android:contentDescription="bluetoothIcon" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+        <LinearLayout
+            android:contentDescription="controllerLeftSide"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fButtonId"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@android:dimen/app_icon_size"
+                android:layout_marginTop="@android:dimen/app_icon_size"
+                android:background="@drawable/round_button"
+                android:text="F"
+                android:textColor="#fff"
+                android:textSize="50sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bButtonId"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="start"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="@android:dimen/app_icon_size"
+                android:layout_marginBottom="@android:dimen/app_icon_size"
+                android:background="@drawable/round_button"
+                android:text="B"
+                android:textColor="#fff"
+                android:textSize="50sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:contentDescription="controllerRightSide"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/lButtonId"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="@android:dimen/app_icon_size"
+                android:layout_marginRight="@android:dimen/app_icon_size"
+                android:background="@drawable/round_button"
+                android:text="L"
+                android:textColor="#fff"
+                android:textSize="50sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/rButtonId"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginEnd="@android:dimen/app_icon_size"
+                android:background="@drawable/round_button"
+                android:text="R"
+                android:textColor="#fff"
+                android:textSize="50sp"
+                android:focusable="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
