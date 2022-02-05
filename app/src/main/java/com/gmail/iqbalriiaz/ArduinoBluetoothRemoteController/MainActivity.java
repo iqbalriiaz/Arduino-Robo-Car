@@ -1,33 +1,35 @@
 package com.gmail.iqbalriiaz.ArduinoBluetoothRemoteController;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.text.TextUtils;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.AppCompatImageButton;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
+import soup.neumorphism.NeumorphImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    public String check="";
+//    public String check="";
 
 
     public static final String TAG = "MainActivity";
@@ -41,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
     private final static int CONNECTING_STATUS = 1; // used in bluetooth handler to identify message status
     private final static int MESSAGE_READ = 2; // used in bluetooth handler to identify message
-    private boolean Pressed;
 
-    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
+//    private boolean Pressed;
+
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility", "MissingPermission"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,22 +56,31 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         setContentView(R.layout.activity_main);
 
-        final Button fButton = findViewById(R.id.fButtonId);
-        final Button bButton = findViewById(R.id.bButtonId);
-        final Button lButton = findViewById(R.id.lButtonId);
-        final Button rButton = findViewById(R.id.rButtonId);
+        Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+        startActivityForResult(enableIntent, 101);
+
+        final NeumorphImageButton fButton = findViewById(R.id.fButtonId);
+        final NeumorphImageButton bButton = findViewById(R.id.bButtonId);
+        final NeumorphImageButton lButton = findViewById(R.id.lButtonId);
+        final NeumorphImageButton rButton = findViewById(R.id.rButtonId);
         final TextView connectionStat = findViewById(R.id.connectionStatId);
-        final ImageButton buttonConnect = findViewById(R.id.buttonConnect);
+        final AppCompatImageButton buttonConnect = findViewById(R.id.buttonConnect);
+        final AppCompatImageButton infoButton = findViewById(R.id.infoButtonId);
 
 
+        Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         fButton.setOnClickListener(v -> {
             try {
                 connectedThread.write("F");
                 Log.d("TAG", "Connected:F button is pressed");
+                vib.vibrate(50);
             } catch (Exception e) {
                 Log.d("TAG", "Not Connected:F button is pressed");
+                vib.vibrate(50);
                 e.printStackTrace();
             }
         });
@@ -77,9 +89,11 @@ public class MainActivity extends AppCompatActivity {
             try {
                 connectedThread.write("B");
                 Log.d("TAG", "Connected:B button is pressed");
+                vib.vibrate(50);
 
             } catch (Exception e) {
                 Log.d("TAG", "Not Connected:B button is pressed");
+                vib.vibrate(50);
                 e.printStackTrace();
             }
         });
@@ -88,8 +102,10 @@ public class MainActivity extends AppCompatActivity {
             try {
                 connectedThread.write("L");
                 Log.d("TAG", "Connected:L button is pressed");
+                vib.vibrate(50);
             } catch (Exception e) {
                 Log.d("TAG", "Not Connected:L button is pressed");
+                vib.vibrate(50);
                 e.printStackTrace();
             }
         });
@@ -98,10 +114,28 @@ public class MainActivity extends AppCompatActivity {
             try {
                 connectedThread.write("R");
                 Log.d("TAG", "Connected:R button is pressed");
+                vib.vibrate(50);
             } catch (Exception e) {
                 Log.d("TAG", "Not Connected:R button is pressed");
+                vib.vibrate(50);
                 e.printStackTrace();
             }
+        });
+
+
+        infoButton.setOnClickListener(v -> {
+              AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+              builder.setMessage(R.string.button_values)
+                      .setIcon(R.drawable.ic_arduino_icon)
+                      .setTitle(R.string.alert_title)
+                      .setCancelable(false)
+                      .setPositiveButton("Back", (dialog, id) -> dialog.cancel());
+
+              // Creating the AlertDialog object and return it
+              AlertDialog alertDialog = builder.create();
+              alertDialog.show();
+
         });
 
 
@@ -225,56 +259,37 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void handleMessage(Message msg) {
                 Log.d("TAG", "handleMessage: " + msg.toString());
-                switch (msg.what) {
-                    case CONNECTING_STATUS:
-                        switch (msg.arg1) {
-                            case 1:
-                                Log.d("TAG", "handleMessage: Connected");
-                                break;
-                            case -1:
-                                Log.d("TAG", "handleMessage: Failed to connect");
-                                break;
-                        }
-                        break;
+                if (msg.what == CONNECTING_STATUS) {
+                    switch (msg.arg1) {
+                        case 1:
+                            Log.d("TAG", "handleMessage: Connected");
+                            break;
+                        case -1:
+                            Log.d("TAG", "handleMessage: Failed to connect");
+                            break;
+                    }
                 }
             }
         };
         handler = new Handler(Looper.getMainLooper()) {
-            @SuppressLint("SetTextI18n")
+            @SuppressLint({"SetTextI18n", "ResourceAsColor"})
             @Override
             public void handleMessage(Message msg){
-                switch (msg.what){
-                    case CONNECTING_STATUS:
-                        switch(msg.arg1){
-                            case 1:
-                                connectionStat.setText("Connected to " + deviceName);
-                                connectionStat.setTextColor(Color.GREEN);
-                                buttonConnect.setEnabled(true);
+                if (msg.what == CONNECTING_STATUS) {
+                    switch (msg.arg1) {
+                        case 1:
+                            connectionStat.setText("Connected to " + deviceName);
+                            connectionStat.setTextColor(Color.parseColor("#02B34B"));
+                            buttonConnect.setEnabled(true);
 
-                                break;
-                            case -1:
-                                connectionStat.setText("Device fails to connect");
-                                connectionStat.setTextColor(Color.RED);
-                                buttonConnect.setEnabled(true);
+                            break;
+                        case -1:
+                            connectionStat.setText("Device fails to connect");
+                            connectionStat.setTextColor(Color.parseColor("#A30404"));
+                            buttonConnect.setEnabled(true);
 
-                                break;
-                        }
-                        break;
-
-
-//                   case MESSAGE_READ:
-//                        String arduinoMsg = msg.obj.toString(); // Read message from Arduino
-//                        switch (arduinoMsg.toLowerCase()){
-//                            case "led is turned on":
-//                                imageView.setBackgroundColor(getResources().getColor(R.color.colorOn));
-//                                textViewInfo.setText("Arduino Message : " + arduinoMsg);
-//                                break;
-//                            case "led is turned off":
-//                                imageView.setBackgroundColor(getResources().getColor(R.color.colorOff));
-//                                textViewInfo.setText("Arduino Message : " + arduinoMsg);
-//                                break;
-//                        }
-//                        break;
+                            break;
+                    }
                 }
             }
         };
@@ -286,34 +301,13 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Button to ON/OFF LED on Arduino Board
-//        aButton.setOnClickListener(new View.OnClickListener() {
-//            @SuppressLint("SetTextI18n")
-//            @Override
-//            public void onClick(View view) {
-//                String cmdText = null;
-//                String btnState = aButton.getText().toString().toLowerCase();
-//                System.out.println(btnState);
-//                if ("a is pressed".equals(btnState)) {
-//                    aButton.setText("A Button Pressed");
-//                    // Command to Pass A Button value on Arduino. Must match with the command in Arduino code
-//                    cmdText = "<a is pressed>";
-//                    //    case "turn off":
-////                        buttonToggle.setText("Turn On");
-////                        // Command to turn off LED on Arduino. Must match with the command in Arduino code
-////                        cmdText = "<turn off>";
-////                        break;
-//                }
-//                // Send command to Arduino board
-//                connectedThread.write(cmdText);
-//            }
-//        });
     }
 
 
     /* ============================ Thread to Create Bluetooth Connection =================================== */
-    public static class CreateConnectThread extends Thread {
+    public class CreateConnectThread extends Thread {
 
+        @SuppressLint("MissingPermission")
         public CreateConnectThread(BluetoothAdapter bluetoothAdapter, String address) {
             /*
             Use a temporary object that is later assigned to mmSocket
@@ -321,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
              */
             BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(address);
             BluetoothSocket tmp = null;
-            UUID uuid = bluetoothDevice.getUuids()[0].getUuid();
+            @SuppressLint("MissingPermission") UUID uuid = bluetoothDevice.getUuids()[0].getUuid();
 
             try {
                 /*
@@ -338,10 +332,12 @@ public class MainActivity extends AppCompatActivity {
             mmSocket = tmp;
         }
 
+        @SuppressLint("MissingPermission")
         public void run() {
             // Cancel discovery because it otherwise slows down the connection.
             BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
             bluetoothAdapter.cancelDiscovery();
+
             try {
                 // Connect to the remote device through the socket. This call blocks
                 // until it succeeds or throws an exception.
@@ -444,41 +440,88 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Arduino Command
-    public void intentAction(String intent_action) throws InterruptedException {
-        if (intent_action == null || TextUtils.isEmpty(intent_action)) {
-            return;
-        }
-        switch (intent_action) {
-            case "F":
-                connectedThread.write("F");
-                check="b";
-                break;
-            case "B":
-                connectedThread.write("B");
-                check="b";
-                break;
-            case "L":
-                connectedThread.write("L");
-                check="b";
-                break;
-            case "R":
-                connectedThread.write("R");
-                check="b";
-                break;
-
-        }
-    }
+//    public void intentAction(String intent_action) throws InterruptedException {
+//        if (intent_action == null || TextUtils.isEmpty(intent_action)) {
+//            return;
+//        }
+//        switch (intent_action) {
+//            case "F":
+//                connectedThread.write("F");
+//                check="b";
+//                break;
+//            case "B":
+//                connectedThread.write("B");
+//                check="b";
+//                break;
+//            case "L":
+//                connectedThread.write("L");
+//                check="b";
+//                break;
+//            case "R":
+//                connectedThread.write("R");
+//                check="b";
+//                break;
+//
+//        }
+//    }
 
     /* ============================ Terminate Connection at BackPress ====================== */
+//    @Override
+//    public void onBackPressed() {
+//        // Terminate Bluetooth Connection and close app
+//        if (createConnectThread != null){
+//            createConnectThread.cancel();
+//        }
+//        Intent a = new Intent(Intent.ACTION_MAIN);
+//        a.addCategory(Intent.CATEGORY_HOME);
+//        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(a);
+//    }
+
     @Override
     public void onBackPressed() {
-        // Terminate Bluetooth Connection and close app
-        if (createConnectThread != null){
-            createConnectThread.cancel();
-        }
-        Intent a = new Intent(Intent.ACTION_MAIN);
+
+//         Terminate Bluetooth Connection and close app
+//        if (createConnectThread != null){
+//            createConnectThread.cancel();
+//        }
+//        Intent a = new Intent(Intent.ACTION_MAIN);
+//        a.addCategory(Intent.CATEGORY_HOME);
+//        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(a);
+
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+
+        alertDialogBuilder.setIcon(R.drawable.ic_warning_icon);
+        alertDialogBuilder.setTitle("Warning");
+        alertDialogBuilder.setMessage("Do you want to exist?");
+        alertDialogBuilder.setCancelable(true);
+
+        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (createConnectThread != null){
+                    createConnectThread.cancel();
+                    finish();
+                }
+                Intent a = new Intent(Intent.ACTION_MAIN);
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
+
+
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
