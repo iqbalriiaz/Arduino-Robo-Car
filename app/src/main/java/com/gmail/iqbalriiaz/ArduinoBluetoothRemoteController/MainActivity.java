@@ -504,16 +504,16 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
 
 //         Terminate Bluetooth Connection and close app
-//        if (createConnectThread != null){
-//            createConnectThread.cancel();
-//        }
-//        Intent a = new Intent(Intent.ACTION_MAIN);
-//        a.addCategory(Intent.CATEGORY_HOME);
-//        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(a);
+        if (createConnectThread != null){
+            createConnectThread.cancel();
+        }
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
 
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+        /*AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
 
         alertDialogBuilder.setIcon(R.drawable.ic_warning_icon);
         alertDialogBuilder.setTitle("Warning");
@@ -541,6 +541,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+        alertDialog.show();*/
     }
 }
