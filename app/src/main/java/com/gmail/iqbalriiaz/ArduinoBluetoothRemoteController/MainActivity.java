@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         connectionStat.setOnClickListener(v ->
         {
             clickCount[0]++;
-            if(clickCount[0] ==5){
+            if(clickCount[0] ==65){
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
                 builder.setMessage("Iqbal Hossen Riaz || Robo Tech Valley || GitHub: iqbalriiaz")
