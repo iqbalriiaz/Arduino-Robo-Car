@@ -144,14 +144,14 @@ public class MainActivity extends AppCompatActivity {
         connectionStat.setOnClickListener(v ->
         {
             clickCount[0]++;
-            if(clickCount[0] ==65){
+            if(clickCount[0] ==5){
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
                 builder.setMessage("Iqbal Hossen Riaz || Robo Tech Valley || GitHub: iqbalriiaz")
                         .setTitle("Developer Info")
                         .setCancelable(false)
                         .setPositiveButton("Back", (dialog, id) -> dialog.cancel());
-
+                clickCount[0] = 0;
                 // Creating the AlertDialog object and return it
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
