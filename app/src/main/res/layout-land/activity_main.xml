@@ -5,86 +5,110 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/controller_background"
+    android:background="@drawable/bg_final"
     android:orientation="vertical"
-    android:backgroundTint="#1E1C1C"
     tools:context=".MainActivity"
     tools:ignore="MissingDefaultResource">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
+        >
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/infoButtonId"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ic_baseline_info_24"
+            android:contentDescription="infoButtonIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.9"
-            android:gravity="end"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:weightSum="3"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <soup.neumorphism.NeumorphCardView
-                style="@style/Widget.Neumorph.CardView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:neumorph_shadowColorDark="@color/white"
-                app:neumorph_shadowColorLight="@color/white"
-                app:neumorph_shapeType="pressed">
 
-                <TextView
-                    android:id="@+id/connectionStatId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No Device Connected"
-                    android:textColor="#A30404"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    />
-            </soup.neumorphism.NeumorphCardView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/buttonConnect"
-                android:background="@drawable/bg_circular"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_bluetooth_24dp"
-                android:layout_marginStart="@android:dimen/app_icon_size"
-                android:contentDescription="bluetoothIcon"
-                />
-            <View
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/infoButtonId"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_baseline_info_24"
-                android:contentDescription="infoButtonIcon"
-                android:layout_marginEnd="10dp"
-                />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <soup.neumorphism.NeumorphCardView
+                    style="@style/Widget.Neumorph.CardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:neumorph_shadowColorDark="@color/white"
+                    app:neumorph_shadowColorLight="@color/white"
+                    app:neumorph_shapeType="pressed">
+
+                    <TextView
+                        android:id="@+id/connectionStatId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"
+                        android:text="No Device Connected"
+                        android:textColor="#A30404"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </soup.neumorphism.NeumorphCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/buttonConnect"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="@android:dimen/app_icon_size"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/bg_circular"
+                    android:contentDescription="bluetoothIcon"
+                    android:src="@drawable/ic_bluetooth_24dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+
         </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-    </LinearLayout>
 
 
     <LinearLayout
-
-        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
         android:gravity="center"
         android:orientation="horizontal"
         android:baselineAligned="false">
@@ -98,12 +122,12 @@
 
             <soup.neumorphism.NeumorphImageButton
                 android:id="@+id/fButtonId"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_gravity="end"
-                android:layout_marginEnd="@android:dimen/app_icon_size"
                 android:layout_marginTop="@android:dimen/app_icon_size"
+                android:layout_marginEnd="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_up_arrow"
                 app:tint="#74404040"
                 app:neumorph_shapeType="pressed"
@@ -112,10 +136,9 @@
             <soup.neumorphism.NeumorphImageButton
                 android:id="@+id/bButtonId"
                 android:foreground="?android:attr/selectableItemBackground"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="start"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="@android:dimen/app_icon_size"
                 android:layout_marginBottom="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_down_arrow"
@@ -156,14 +179,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
             <soup.neumorphism.NeumorphImageButton
                 android:id="@+id/lButtonId"
                 android:foreground="?android:attr/selectableItemBackground"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginLeft="@android:dimen/app_icon_size"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginRight="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_left_arrow"
                 app:tint="#74404040"
@@ -173,8 +196,8 @@
             <soup.neumorphism.NeumorphImageButton
                 android:id="@+id/rButtonId"
                 android:foreground="?android:attr/selectableItemBackground"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginEnd="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_right_arrow"
                 app:tint="#74404040"
@@ -205,7 +228,18 @@
                 android:textSize="50sp"
                 android:focusable="true" />-->
         </LinearLayout>
+
+
+
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight=".4"
+        android:gravity="center"
+        android:baselineAligned="false">
+
+    </LinearLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

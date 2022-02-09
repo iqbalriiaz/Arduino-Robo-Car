@@ -18,6 +18,8 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -138,6 +140,26 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        final int[] clickCount = {0};
+        connectionStat.setOnClickListener(v ->
+        {
+            clickCount[0]++;
+            if(clickCount[0] ==65){
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                builder.setMessage("Iqbal Hossen Riaz || Robo Tech Valley || GitHub: iqbalriiaz")
+                        .setTitle("Developer Info")
+                        .setCancelable(false)
+                        .setPositiveButton("Back", (dialog, id) -> dialog.cancel());
+
+                // Creating the AlertDialog object and return it
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+            }
+
+        });
+
 
 
 //            fButton.setOnTouchListener((v, event) -> {
@@ -238,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
             // Get the device address to make BT Connection
             deviceAddress = getIntent().getStringExtra("deviceAddress");
             // Show connection status
-            connectionStat.setText("Connecting to " + deviceName + "...");
+            connectionStat.setText("Connecting to "+deviceName);
             buttonConnect.setEnabled(false);
 
             /*
@@ -278,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
                 if (msg.what == CONNECTING_STATUS) {
                     switch (msg.arg1) {
                         case 1:
-                            connectionStat.setText("Connected to " + deviceName);
+                            connectionStat.setText("Connected to : "+deviceName);
                             connectionStat.setTextColor(Color.parseColor("#02B34B"));
                             buttonConnect.setEnabled(true);
 
@@ -505,12 +527,9 @@ public class MainActivity extends AppCompatActivity {
                     createConnectThread.cancel();
                     finish();
                 }
-                Intent a = new Intent(Intent.ACTION_MAIN);
-        a.addCategory(Intent.CATEGORY_HOME);
+                Intent a = new Intent(Intent.ACTION_MAIN);a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
-
-
             }
         });
 
