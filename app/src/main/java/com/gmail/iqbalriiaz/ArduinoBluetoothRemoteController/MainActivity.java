@@ -6,7 +6,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,8 +17,6 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -33,11 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 //    public String check="";
 
-
-    public static final String TAG = "MainActivity";
-
     private String deviceName = null;
-    private String deviceAddress;
     public static Handler handler;
     public static BluetoothSocket mmSocket;
     public static ConnectedThread connectedThread;
@@ -258,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
         deviceName = getIntent().getStringExtra("deviceName");
         if (deviceName != null){
             // Get the device address to make BT Connection
-            deviceAddress = getIntent().getStringExtra("deviceAddress");
+            String deviceAddress = getIntent().getStringExtra("deviceAddress");
             // Show connection status
             connectionStat.setText("Connecting to "+deviceName);
             buttonConnect.setEnabled(false);
@@ -269,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
             selected device (see the thread code below)
              */
             BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-            createConnectThread = new CreateConnectThread(bluetoothAdapter,deviceAddress);
+            createConnectThread = new CreateConnectThread(bluetoothAdapter, deviceAddress);
             createConnectThread.start();
         }
 
@@ -327,7 +320,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /* ============================ Thread to Create Bluetooth Connection =================================== */
-    public class CreateConnectThread extends Thread {
+    public static class CreateConnectThread extends Thread {
 
         @SuppressLint("MissingPermission")
         public CreateConnectThread(BluetoothAdapter bluetoothAdapter, String address) {
