@@ -23,7 +23,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/ic_baseline_info_24"
-            android:contentDescription="infoButtonIcon"
+            android:contentDescription="@string/info_button_des"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,7 +43,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                >
 
             </LinearLayout>
 
@@ -89,13 +90,9 @@
                     android:layout_marginStart="@android:dimen/app_icon_size"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/bg_circular"
-                    android:contentDescription="bluetoothIcon"
+                    android:contentDescription="@string/bluetooth_button_des"
                     android:src="@drawable/ic_bluetooth_24dp" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
             </LinearLayout>
 
 
@@ -112,7 +109,6 @@
         android:orientation="horizontal"
         android:baselineAligned="false">
         <LinearLayout
-            android:contentDescription="controllerLeftSide"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -128,7 +124,7 @@
                 android:layout_marginTop="@android:dimen/app_icon_size"
                 android:layout_marginEnd="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_up_arrow"
-                app:tint="#2196F3"
+                app:tint="#74404040"
                 app:neumorph_shapeType="pressed"
               />
 
@@ -141,7 +137,7 @@
                 android:layout_marginStart="@android:dimen/app_icon_size"
                 android:layout_marginBottom="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_down_arrow"
-                app:tint="#2196F3"
+                app:tint="#74404040"
                 app:neumorph_shapeType="pressed"/>
 
             <!--<androidx.appcompat.widget.AppCompatButton
@@ -173,7 +169,6 @@
 
 
         <LinearLayout
-            android:contentDescription="controllerRightSide"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -188,7 +183,7 @@
                 android:layout_height="100dp"
                 android:layout_marginEnd="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_left_arrow"
-                app:tint="#2196F3"
+                app:tint="#74404040"
                 app:neumorph_shapeType="pressed"
                 />
 
@@ -199,7 +194,7 @@
                 android:layout_height="100dp"
                 android:layout_marginEnd="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_right_arrow"
-                app:tint="#2196F3"
+                app:tint="#74404040"
                 app:neumorph_shapeType="pressed"
                 />
 
