@@ -43,8 +43,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                >
+                android:layout_weight="1">
 
             </LinearLayout>
 
@@ -70,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
-                        android:text="No Device Connected"
+                        android:text="@string/controller_tv"
                         android:textColor="#A30404"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -129,7 +128,7 @@
                 android:layout_marginTop="@android:dimen/app_icon_size"
                 android:layout_marginEnd="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_up_arrow"
-                app:tint="#74404040"
+                app:tint="#2196F3"
                 app:neumorph_shapeType="pressed"
               />
 
@@ -142,7 +141,7 @@
                 android:layout_marginStart="@android:dimen/app_icon_size"
                 android:layout_marginBottom="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_down_arrow"
-                app:tint="#74404040"
+                app:tint="#2196F3"
                 app:neumorph_shapeType="pressed"/>
 
             <!--<androidx.appcompat.widget.AppCompatButton
@@ -187,9 +186,9 @@
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="@android:dimen/app_icon_size"
+                android:layout_marginEnd="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_left_arrow"
-                app:tint="#74404040"
+                app:tint="#2196F3"
                 app:neumorph_shapeType="pressed"
                 />
 
@@ -200,7 +199,7 @@
                 android:layout_height="100dp"
                 android:layout_marginEnd="@android:dimen/app_icon_size"
                 android:src="@drawable/ic_right_arrow"
-                app:tint="#74404040"
+                app:tint="#2196F3"
                 app:neumorph_shapeType="pressed"
                 />
 
