@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.gmail.iqbalriiaz.ArduinoBluetoothRemoteController">
+    package="com.robotechvalley.ArduinoBluetoothController">
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <!-- Permissions for Bluetooth access -->
@@ -22,14 +22,13 @@
         android:theme="@style/Theme.ArduinoBluetoothRemoteController">
 
         <activity
-            android:name=".SelectDeviceActivity"
+            android:name="com.robotechvalley.ArduinoBluetoothController.SelectDeviceActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.robotechvalley.ArduinoBluetoothController.MainActivity"
             android:exported="true"
             android:screenOrientation="sensorLandscape"
-            android:windowSoftInputMode="adjustResize"
-            >
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

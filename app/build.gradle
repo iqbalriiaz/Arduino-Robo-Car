@@ -6,7 +6,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.gmail.iqbalriiaz.ArduinoBluetoothRemoteController"
+        applicationId "com.robotechvalley.ArduinoBluetoothController"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -15,9 +15,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-//    buildFeature {
-//        viewBinding true
-//    }
 
     buildTypes {
         release {

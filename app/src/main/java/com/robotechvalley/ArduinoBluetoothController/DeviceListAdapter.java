@@ -1,4 +1,4 @@
-package com.gmail.iqbalriiaz.ArduinoBluetoothRemoteController;
+package com.robotechvalley.ArduinoBluetoothController;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import java.util.List;
 
@@ -53,10 +54,10 @@ public class DeviceListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         itemHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,MainActivity.class);
+                Intent intent = new Intent(context, MainActivity.class);
                 // Send device details to the MainActivity
                 intent.putExtra("deviceName", deviceInfoModel.getDeviceName());
-                intent.putExtra("deviceAddress",deviceInfoModel.getDeviceHardwareAddress());
+                intent.putExtra("deviceAddress", deviceInfoModel.getDeviceHardwareAddress());
                 // Call MainActivity
                 context.startActivity(intent);
 

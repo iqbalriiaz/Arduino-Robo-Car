@@ -1,4 +1,4 @@
-package com.gmail.iqbalriiaz.ArduinoBluetoothRemoteController;
+package com.robotechvalley.ArduinoBluetoothController;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -14,34 +14,38 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.SwitchCompat;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
+
 import soup.neumorphism.NeumorphImageButton;
 
 public class MainActivity extends AppCompatActivity {
-
-//    public String check="";
 
     private String deviceName = null;
     public static Handler handler;
     public static BluetoothSocket mmSocket;
     public static ConnectedThread connectedThread;
     public static CreateConnectThread createConnectThread;
-
     private final static int CONNECTING_STATUS = 1; // used in bluetooth handler to identify message status
     private final static int MESSAGE_READ = 2; // used in bluetooth handler to identify message
 
-//    private boolean Pressed;
+    public boolean Pressed;
+    SwitchCompat simpleSwitch;
 
-    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility", "MissingPermission"})
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility", "MissingPermission", "ResourceAsColor"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,70 +70,182 @@ public class MainActivity extends AppCompatActivity {
         final AppCompatImageButton buttonConnect = findViewById(R.id.buttonConnect);
         final AppCompatImageButton infoButton = findViewById(R.id.infoButtonId);
 
-
         Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        fButton.setOnClickListener(v -> {
-            try {
-                connectedThread.write("F");
-                Log.d("TAG", "Connected:F button is pressed");
-                vib.vibrate(50);
-            } catch (Exception e) {
-                Log.d("TAG", "Not Connected:F button is pressed");
-                vib.vibrate(50);
-                e.printStackTrace();
+
+        simpleSwitch = findViewById(R.id.switchId);// initiate Switch
+        simpleSwitch.setTextOn("ROBOT"); // displayed text of the Switch whenever it is in checked or on state
+        simpleSwitch.setTextOff("CAR"); // displayed text of the Switch whenever it is in unchecked i.e. off state
+
+        simpleSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+
+            if (isChecked) {
+                Log.d("TAG", "Switched to Robot Mode");
+                Toast.makeText(getApplicationContext(), "Robot Mode", Toast.LENGTH_SHORT).show();
+                fButton.setOnTouchListener((v, event) -> {
+
+                    fButton.setOnClickListener(v1 -> {
+                        try {
+                            connectedThread.write("F");
+                            Log.d("TAG", "Connected:F button is pressed");
+                            vib.vibrate(50);
+                        } catch (Exception e) {
+                            Log.d("TAG", "Not Connected:F button is pressed");
+                            vib.vibrate(50);
+//                            e.printStackTrace();
+                        }
+                    });
+                    return false;
+                });
+                bButton.setOnTouchListener((v, event) -> {
+                    bButton.setOnClickListener(v1 -> {
+                        try {
+                            connectedThread.write("B");
+                            Log.d("TAG", "Connected:B button is pressed");
+                            vib.vibrate(50);
+
+                        } catch (Exception e) {
+                            Log.d("TAG", "Not Connected:B button is pressed");
+                            vib.vibrate(50);
+//                            e.printStackTrace();
+                        }
+                    });
+                    return false;
+                });
+                lButton.setOnTouchListener((v, event) -> {
+                    lButton.setOnClickListener(v1 -> {
+                        try {
+                            connectedThread.write("L");
+                            Log.d("TAG", "Connected:L button is pressed");
+                            vib.vibrate(50);
+                        } catch (Exception e) {
+                            Log.d("TAG", "Not Connected:L button is pressed");
+                            vib.vibrate(50);
+//                            e.printStackTrace();
+                        }
+                    });
+                    return false;
+                });
+                rButton.setOnTouchListener((v, event) -> {
+                    rButton.setOnClickListener(v1 -> {
+                        try {
+                            connectedThread.write("R");
+                            Log.d("TAG", "Connected:R button is pressed");
+                            vib.vibrate(50);
+                        } catch (Exception e) {
+                            Log.d("TAG", "Not Connected:R button is pressed");
+                            vib.vibrate(50);
+//                            e.printStackTrace();
+                        }
+                    });
+                    return false;
+                });
+            } else {
+                Toast.makeText(getApplicationContext(), "Car Mode", Toast.LENGTH_SHORT).show();
+                Log.d("TAG", "Switched to Car Mode");
+                fButton.setOnTouchListener((v, event) -> {
+                    try {
+                        connectedThread.write("F");
+                        Log.d("TAG", "Connected:F button is pressed");
+                    } catch (Exception e) {
+                        Log.d("TAG", "Not Connected:F button is pressed");
+//                        e.printStackTrace();
+                    }
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        Pressed = false;
+                        try {
+                            connectedThread.write("S");
+                            Log.d("TAG", "Connected:S value passing");
+                        } catch (Exception e) {
+                            Log.d("TAG", "Not Connected:S value passing");
+//                            e.printStackTrace();
+                        }
+                    }
+                    return true;
+                });
+
+
+                bButton.setOnTouchListener((v, event) -> {
+                    try {
+                        connectedThread.write("B");
+                        Log.d("TAG", "Connected:B button is pressed");
+
+                    } catch (Exception e) {
+                        Log.d("TAG", "Not Connected:B button is pressed");
+//                        e.printStackTrace();
+                    }
+
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        Pressed = false;
+                        try {
+                            connectedThread.write("S");
+                            Log.d("TAG", "Connected:S value passing");
+                        } catch (Exception e) {
+                            Log.d("TAG", "Not Connected:S value passing");
+//                            e.printStackTrace();
+                        }
+                    }
+
+                    return true;
+                });
+
+
+                lButton.setOnTouchListener((v, event) -> {
+                    try {
+                        connectedThread.write("L");
+                        Log.d("TAG", "Connected:L button is pressed");
+                    } catch (Exception e) {
+                        Log.d("TAG", "Not Connected:L button is pressed");
+//                        e.printStackTrace();
+                    }
+
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        Pressed = false;
+                        try {
+                            connectedThread.write("S");
+                            Log.d("TAG", "Connected:S value passing");
+                        } catch (Exception e) {
+                            Log.d("TAG", "Not Connected:S value passing");
+//                            e.printStackTrace();
+                        }
+                    }
+                    return true;
+                });
+
+                rButton.setOnTouchListener((v, event) -> {
+                    try {
+                        connectedThread.write("R");
+                        Log.d("TAG", "Connected:R button is pressed");
+                    } catch (Exception e) {
+                        Log.d("TAG", "Not Connected:R button is pressed");
+//                        e.printStackTrace();
+                    }
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
+                        Pressed = false;
+                        try {
+                            connectedThread.write("S");
+                            Log.d("TAG", "Connected:S value passing");
+                        } catch (Exception e) {
+                            Log.d("TAG", "Not Connected:S value passing");
+//                            e.printStackTrace();
+                        }
+                    }
+                    return true;
+                });
             }
         });
-
-        bButton.setOnClickListener(v -> {
-            try {
-                connectedThread.write("B");
-                Log.d("TAG", "Connected:B button is pressed");
-                vib.vibrate(50);
-
-            } catch (Exception e) {
-                Log.d("TAG", "Not Connected:B button is pressed");
-                vib.vibrate(50);
-                e.printStackTrace();
-            }
-        });
-
-        lButton.setOnClickListener(v -> {
-            try {
-                connectedThread.write("L");
-                Log.d("TAG", "Connected:L button is pressed");
-                vib.vibrate(50);
-            } catch (Exception e) {
-                Log.d("TAG", "Not Connected:L button is pressed");
-                vib.vibrate(50);
-                e.printStackTrace();
-            }
-        });
-
-        rButton.setOnClickListener(v -> {
-            try {
-                connectedThread.write("R");
-                Log.d("TAG", "Connected:R button is pressed");
-                vib.vibrate(50);
-            } catch (Exception e) {
-                Log.d("TAG", "Not Connected:R button is pressed");
-                vib.vibrate(50);
-                e.printStackTrace();
-            }
-        });
-
 
         infoButton.setOnClickListener(v -> {
-              AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-              builder.setMessage(R.string.button_values)
-                      .setIcon(R.drawable.ic_arduino_icon)
-                      .setTitle(R.string.alert_title)
-                      .setCancelable(false)
-                      .setPositiveButton("Back", (dialog, id) -> dialog.cancel());
+            builder.setMessage(R.string.button_values)
+                    .setIcon(R.drawable.ic_arduino_icon)
+                    .setTitle(R.string.alert_title)
+                    .setCancelable(false)
+                    .setPositiveButton("Back", (dialog, id) -> dialog.cancel());
 
-              // Creating the AlertDialog object and return it
-              AlertDialog alertDialog = builder.create();
-              alertDialog.show();
+            // Creating the AlertDialog object and return it
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
 
         });
 
@@ -137,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
         connectionStat.setOnClickListener(v ->
         {
             clickCount[0]++;
-            if(clickCount[0] ==65){
+            if (clickCount[0] == 50) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
                 builder.setMessage("Iqbal Hossen Riaz || Robo Tech Valley || GitHub: iqbalriiaz")
@@ -154,106 +270,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-//            fButton.setOnTouchListener((v, event) -> {
-//                try {
-//                    connectedThread.write("F");
-//                    Log.d("TAG", "Connected:F button is pressed");
-//                } catch (Exception e) {
-//                    Log.d("TAG", "Not Connected:F button is pressed");
-//                    e.printStackTrace();
-//                }
-//                        if (event.getAction() == MotionEvent.ACTION_UP) {
-//                            Pressed = false;
-//                            try {
-//                                connectedThread.write("S");
-//                                Log.d("TAG", "Connected:S value passing");
-//                            } catch (Exception e) {
-//                                Log.d("TAG", "Not Connected:S value passing");
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                return false;
-//            });
-//
-//
-//
-//
-//        bButton.setOnTouchListener((v, event) -> {
-//            try {
-//                connectedThread.write("B");
-//                Log.d("TAG", "Connected:B button is pressed");
-//
-//            } catch (Exception e) {
-//                Log.d("TAG", "Not Connected:B button is pressed");
-//                e.printStackTrace();
-//            }
-//
-//            if (event.getAction() == MotionEvent.ACTION_UP) {
-//                Pressed = false;
-//                try {
-//                    connectedThread.write("S");
-//                    Log.d("TAG", "Connected:S value passing");
-//                } catch (Exception e) {
-//                    Log.d("TAG", "Not Connected:S value passing");
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            return false;
-//        });
-//
-//
-//        lButton.setOnTouchListener((v, event) -> {
-//            try {
-//                connectedThread.write("L");
-//                Log.d("TAG", "Connected:L button is pressed");
-//            } catch (Exception e) {
-//                Log.d("TAG", "Not Connected:L button is pressed");
-//                e.printStackTrace();
-//            }
-//
-//            if (event.getAction() == MotionEvent.ACTION_UP) {
-//                Pressed = false;
-//                try {
-//                    connectedThread.write("S");
-//                    Log.d("TAG", "Connected:S value passing");
-//                } catch (Exception e) {
-//                    Log.d("TAG", "Not Connected:S value passing");
-//                    e.printStackTrace();
-//                }
-//            }
-//            return false;
-//        });
-//
-//        rButton.setOnTouchListener((v, event) -> {
-//            try {
-//                connectedThread.write("R");
-//                Log.d("TAG", "Connected:R button is pressed");
-//            } catch (Exception e) {
-//                Log.d("TAG", "Not Connected:R button is pressed");
-//                e.printStackTrace();
-//            }
-//            if (event.getAction() == MotionEvent.ACTION_UP) {
-//                Pressed = false;
-//                try {
-//                    connectedThread.write("S");
-//                    Log.d("TAG", "Connected:S value passing");
-//                } catch (Exception e) {
-//                    Log.d("TAG", "Not Connected:S value passing");
-//                    e.printStackTrace();
-//                }
-//            }
-//            return false;
-//        });
-
         // If a bluetooth device has been selected from SelectDeviceActivity
         deviceName = getIntent().getStringExtra("deviceName");
-        if (deviceName != null){
+        if (deviceName != null) {
             // Get the device address to make BT Connection
             String deviceAddress = getIntent().getStringExtra("deviceAddress");
             // Show connection status
-            connectionStat.setText("Connecting to "+deviceName);
+            connectionStat.setText("Connecting to " + deviceName);
             buttonConnect.setEnabled(false);
 
             /*
@@ -289,11 +312,11 @@ public class MainActivity extends AppCompatActivity {
         handler = new Handler(Looper.getMainLooper()) {
             @SuppressLint({"SetTextI18n", "ResourceAsColor"})
             @Override
-            public void handleMessage(Message msg){
+            public void handleMessage(Message msg) {
                 if (msg.what == CONNECTING_STATUS) {
                     switch (msg.arg1) {
                         case 1:
-                            connectionStat.setText("Connected to : "+deviceName);
+                            connectionStat.setText("Connected to : " + deviceName);
                             connectionStat.setTextColor(Color.parseColor("#02B34B"));
                             buttonConnect.setEnabled(true);
 
@@ -403,7 +426,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 tmpIn = socket.getInputStream();
                 tmpOut = socket.getOutputStream();
-            } catch (IOException ignored) { }
+            } catch (IOException ignored) {
+            }
 
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
@@ -421,10 +445,10 @@ public class MainActivity extends AppCompatActivity {
                      */
                     buffer[bytes] = (byte) mmInStream.read();
                     String readMessage;
-                    if (buffer[bytes] == '\n'){
-                        readMessage = new String(buffer,0,bytes);
-                        Log.e("Arduino Message",readMessage);
-                        handler.obtainMessage(MESSAGE_READ,readMessage).sendToTarget();
+                    if (buffer[bytes] == '\n') {
+                        readMessage = new String(buffer, 0, bytes);
+                        Log.e("Arduino Message", readMessage);
+                        handler.obtainMessage(MESSAGE_READ, readMessage).sendToTarget();
                         bytes = 0;
                     } else {
                         bytes++;
@@ -442,7 +466,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 mmOutStream.write(bytes);
             } catch (IOException e) {
-                Log.e("Send Error","Unable to send message",e);
+                Log.e("Send Error", "Unable to send message", e);
             }
         }
 
@@ -450,54 +474,20 @@ public class MainActivity extends AppCompatActivity {
         public void cancel() {
             try {
                 mmSocket.close();
-            } catch (IOException ignored) { }
+            } catch (IOException ignored) {
+            }
         }
     }
 
-    //Arduino Command
-//    public void intentAction(String intent_action) throws InterruptedException {
-//        if (intent_action == null || TextUtils.isEmpty(intent_action)) {
-//            return;
-//        }
-//        switch (intent_action) {
-//            case "F":
-//                connectedThread.write("F");
-//                check="b";
-//                break;
-//            case "B":
-//                connectedThread.write("B");
-//                check="b";
-//                break;
-//            case "L":
-//                connectedThread.write("L");
-//                check="b";
-//                break;
-//            case "R":
-//                connectedThread.write("R");
-//                check="b";
-//                break;
-//
-//        }
-//    }
+
 
     /* ============================ Terminate Connection at BackPress ====================== */
-//    @Override
-//    public void onBackPressed() {
-//        // Terminate Bluetooth Connection and close app
-//        if (createConnectThread != null){
-//            createConnectThread.cancel();
-//        }
-//        Intent a = new Intent(Intent.ACTION_MAIN);
-//        a.addCategory(Intent.CATEGORY_HOME);
-//        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(a);
-//    }
 
     @Override
     public void onBackPressed() {
 
 //         Terminate Bluetooth Connection and close app
-        if (createConnectThread != null){
+        if (createConnectThread != null) {
             createConnectThread.cancel();
         }
         Intent a = new Intent(Intent.ACTION_MAIN);
@@ -505,35 +495,5 @@ public class MainActivity extends AppCompatActivity {
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
 
-
-        /*AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-
-        alertDialogBuilder.setIcon(R.drawable.ic_warning_icon);
-        alertDialogBuilder.setTitle("Warning");
-        alertDialogBuilder.setMessage("Do you want to exist?");
-        alertDialogBuilder.setCancelable(true);
-
-        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (createConnectThread != null){
-                    createConnectThread.cancel();
-                    finish();
-                }
-                Intent a = new Intent(Intent.ACTION_MAIN);a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(a);
-            }
-        });
-
-        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();*/
     }
 }

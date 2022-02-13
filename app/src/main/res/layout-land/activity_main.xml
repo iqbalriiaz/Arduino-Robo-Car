@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_final"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context="com.robotechvalley.ArduinoBluetoothController.MainActivity"
     tools:ignore="MissingDefaultResource">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        >
+        android:layout_weight="1">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/infoButtonId"
@@ -32,8 +31,8 @@
             android:layout_height="match_parent"
             android:baselineAligned="false"
             android:gravity="center"
-            android:weightSum="3"
             android:orientation="horizontal"
+            android:weightSum="3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,8 +43,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                >
+                android:gravity="end">
 
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="18dp"
+                    android:checked="false"
+                    app:showText="true" />
             </LinearLayout>
 
 
@@ -100,14 +106,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
     <LinearLayout
-        android:layout_height="0dp"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="2"
+        android:baselineAligned="false"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -119,51 +125,31 @@
                 android:id="@+id/fButtonId"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_gravity="end"
                 android:layout_marginTop="@android:dimen/app_icon_size"
                 android:layout_marginEnd="@android:dimen/app_icon_size"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:src="@drawable/ic_up_arrow"
-                app:tint="#74404040"
                 app:neumorph_shapeType="pressed"
-              />
+                app:tint="#74404040"
+                tools:ignore="UnusedAttribute" />
 
             <soup.neumorphism.NeumorphImageButton
                 android:id="@+id/bButtonId"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="start"
                 android:layout_marginStart="@android:dimen/app_icon_size"
                 android:layout_marginBottom="@android:dimen/app_icon_size"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:src="@drawable/ic_down_arrow"
+                app:neumorph_shapeType="pressed"
                 app:tint="#74404040"
-                app:neumorph_shapeType="pressed"/>
-
-            <!--<androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/fButtonId"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="end"
-                android:layout_marginEnd="@android:dimen/app_icon_size"
-                android:layout_marginTop="@android:dimen/app_icon_size"
-                android:background="@drawable/round_button" android:textColor="#fff"
-                android:textSize="50sp" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bButtonId"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="start"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="@android:dimen/app_icon_size"
-                android:layout_marginBottom="@android:dimen/app_icon_size"
-                android:background="@drawable/round_button"
-                android:text="B"
-                android:textColor="#fff"
-                android:textSize="50sp" />-->
+                tools:ignore="UnusedAttribute" />
 
         </LinearLayout>
 
@@ -171,68 +157,49 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
             <soup.neumorphism.NeumorphImageButton
                 android:id="@+id/lButtonId"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="@android:dimen/app_icon_size"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:src="@drawable/ic_left_arrow"
-                app:tint="#74404040"
                 app:neumorph_shapeType="pressed"
-                />
+                app:tint="#74404040"
+                tools:ignore="UnusedAttribute" />
 
             <soup.neumorphism.NeumorphImageButton
                 android:id="@+id/rButtonId"
-                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="@android:dimen/app_icon_size"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:src="@drawable/ic_right_arrow"
-                app:tint="#74404040"
                 app:neumorph_shapeType="pressed"
-                />
+                app:tint="#74404040"
+                tools:ignore="UnusedAttribute" />
 
-           <!-- <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/lButtonId"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginLeft="@android:dimen/app_icon_size"
-                android:layout_marginRight="@android:dimen/app_icon_size"
-                android:background="@drawable/round_button"
-                android:text="L"
-                android:textColor="#fff"
-                android:textSize="50sp" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/rButtonId"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_marginEnd="@android:dimen/app_icon_size"
-                android:background="@drawable/round_button"
-                android:text="R"
-                android:textColor="#fff"
-                android:textSize="50sp"
-                android:focusable="true" />-->
         </LinearLayout>
-
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_height="0dp"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight=".4"
+        android:baselineAligned="false"
         android:gravity="center"
-        android:baselineAligned="false">
+        tools:ignore="UselessLeaf">
 
     </LinearLayout>
 

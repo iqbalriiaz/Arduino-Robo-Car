@@ -1,4 +1,4 @@
-package com.gmail.iqbalriiaz.ArduinoBluetoothRemoteController;
+package com.robotechvalley.iqbalriiaz.ArduinoBluetoothRemoteController;
 
 import org.junit.Test;
 
