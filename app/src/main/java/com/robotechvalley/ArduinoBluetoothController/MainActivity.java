@@ -13,10 +13,12 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Vibrator;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -57,15 +58,16 @@ public class MainActivity extends AppCompatActivity {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
+
         setContentView(R.layout.activity_main);
 
         Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
         startActivityForResult(enableIntent, 101);
 
-        final NeumorphImageButton fButton = findViewById(R.id.fButtonId);
-        final NeumorphImageButton bButton = findViewById(R.id.bButtonId);
-        final NeumorphImageButton lButton = findViewById(R.id.lButtonId);
-        final NeumorphImageButton rButton = findViewById(R.id.rButtonId);
+        final AppCompatImageButton fButton = findViewById(R.id.fButtonId);
+        final AppCompatImageButton bButton = findViewById(R.id.bButtonId);
+        final AppCompatImageButton lButton = findViewById(R.id.lButtonId);
+        final AppCompatImageButton rButton = findViewById(R.id.rButtonId);
         final TextView connectionStat = findViewById(R.id.connectionStatId);
         final AppCompatImageButton buttonConnect = findViewById(R.id.buttonConnect);
         final AppCompatImageButton infoButton = findViewById(R.id.infoButtonId);
@@ -246,6 +248,7 @@ public class MainActivity extends AppCompatActivity {
             // Creating the AlertDialog object and return it
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
+            ((TextView)alertDialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
 
         });
 
