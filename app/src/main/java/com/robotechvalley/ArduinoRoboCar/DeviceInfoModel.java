@@ -1,4 +1,4 @@
-package com.robotechvalley.ArduinoBluetoothController;
+package com.robotechvalley.ArduinoRoboCar;
 
 public class DeviceInfoModel {
     private String deviceName, deviceHardwareAddress;

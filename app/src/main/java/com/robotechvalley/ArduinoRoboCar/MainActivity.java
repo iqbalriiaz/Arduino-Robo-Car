@@ -1,4 +1,4 @@
-package com.robotechvalley.ArduinoBluetoothController;
+package com.robotechvalley.ArduinoRoboCar;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -18,7 +18,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +30,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
-
-import soup.neumorphism.NeumorphImageButton;
 
 public class MainActivity extends AppCompatActivity {
 

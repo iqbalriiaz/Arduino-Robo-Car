@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Arduino Bluetooth Controller</string>
+    <string name="app_name">Arduino Robo Car</string>
     <string name="controller_tv">No Device Connected</string>
     <string name="info_button_des">infoButtonIcon</string>
     <string name="bluetooth_button_des">bluetoothIcon</string>
@@ -9,7 +9,7 @@
         \n ↑ = F \u0020\u0020 ↓ \u0020\u0020 = B \u0020\u0020 ← = L  \u0020\u0020 → = R \u0020\u0020 Stop = S
         \n \n <b>Robot Mode:</b> Single Button Value on Press.
         \n <b>Car Mode:</b> Continuous Button Value on Press.
-        \n\n <a href="https://github.com/iqbalriiaz">@iqbalriiaz</a>
+        \n\n <a href="https://github.com/iqbalriiaz">Iqbal Riaz</a>
         \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020
         \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020
         <a href="https://robotechvalley.com/">Robo Tech Valley</a>

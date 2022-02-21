@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.robotechvalley.ArduinoBluetoothController">
+    package="com.robotechvalley.ArduinoRoboCar">
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <!-- Permissions for Bluetooth access -->
@@ -22,10 +22,10 @@
         android:theme="@style/Theme.ArduinoBluetoothRemoteController">
 
         <activity
-            android:name="com.robotechvalley.ArduinoBluetoothController.SelectDeviceActivity"
+            android:name="com.robotechvalley.ArduinoRoboCar.SelectDeviceActivity"
             android:exported="false" />
         <activity
-            android:name="com.robotechvalley.ArduinoBluetoothController.MainActivity"
+            android:name="com.robotechvalley.ArduinoRoboCar.MainActivity"
             android:exported="true"
             android:screenOrientation="sensorLandscape"
             android:windowSoftInputMode="adjustResize">

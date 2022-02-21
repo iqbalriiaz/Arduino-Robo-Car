@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
     android:orientation="vertical"
-    tools:context="com.robotechvalley.ArduinoBluetoothController.MainActivity"
+    tools:context="com.robotechvalley.ArduinoRoboCar.MainActivity"
     tools:ignore="MissingDefaultResource">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,72 +38,195 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end">
+                android:layout_height="match_parent"
+                android:layout_weight="1.1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switchId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="18dp"
-                    android:checked="false"
-                    app:showText="true" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    tools:ignore="NestedWeights,UselessLeaf">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:baselineAligned="false"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.9"
+                        tools:ignore="UselessLeaf">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.4">
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switchId"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:checked="false"
+                            android:gravity="bottom"
+                            app:showText="true" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.4"
+                        tools:ignore="UselessLeaf">
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    tools:ignore="NestedWeights,UselessLeaf">
+
+                </LinearLayout>
+
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <soup.neumorphism.NeumorphCardView
-                    style="@style/Widget.Neumorph.CardView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:neumorph_shadowColorDark="@color/white"
-                    app:neumorph_shadowColorLight="@color/white"
-                    app:neumorph_shapeType="pressed">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    tools:ignore="NestedWeights,UselessLeaf">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2.2"
+                    android:gravity="center">
 
                     <TextView
                         android:id="@+id/connectionStatId"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
                         android:text="@string/controller_tv"
+                        android:textAppearance="?android:textAppearanceLarge"
                         android:textColor="#A30404"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-                </soup.neumorphism.NeumorphCardView>
+                        android:textStyle="bold"
+                        tools:ignore="UnusedAttribute" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    tools:ignore="NestedWeights,UselessLeaf">
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_weight="1.1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/buttonConnect"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="@android:dimen/app_icon_size"
-                    android:layout_marginTop="15dp"
-                    android:contentDescription="@string/bluetooth_button_des"
-                    android:src="@drawable/ic_bluetooth_icon" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    tools:ignore="NestedWeights,UselessLeaf">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:baselineAligned="false"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.2"
+                        tools:ignore="UselessLeaf">
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5">
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/buttonConnect"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/bluetooth_button_des"
+                            android:src="@drawable/ic_bluetooth_icon" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        tools:ignore="UselessLeaf">
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    tools:ignore="NestedWeights,UselessLeaf">
+
+                </LinearLayout>
 
             </LinearLayout>
 
-
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -170,7 +293,6 @@
                 android:baselineAligned="false">
 
 
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -198,11 +320,10 @@
 
                 </LinearLayout>
 
-
             </LinearLayout>
 
-
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="0dp"
@@ -216,7 +337,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.3"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="NestedWeights,UselessLeaf">
 
             </LinearLayout>
 
@@ -224,6 +346,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:baselineAligned="false"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -269,11 +392,14 @@
                         app:tint="#6F6E6E"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    tools:ignore="UselessLeaf">
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -283,7 +409,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.7"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                tools:ignore="UselessLeaf">
 
             </LinearLayout>
 
