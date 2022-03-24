@@ -276,7 +276,6 @@
                         android:foreground="?android:attr/selectableItemBackground"
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_up_arrow"
-                        app:neumorph_shapeType="pressed"
                         app:tint="#6F6E6E"
                         tools:ignore="UnusedAttribute" />
 
@@ -366,7 +365,6 @@
                         android:foreground="?android:attr/selectableItemBackground"
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_left_arrow"
-                        app:neumorph_shapeType="pressed"
                         app:tint="#6F6E6E"
                         tools:ignore="UnusedAttribute" />
 
@@ -388,7 +386,6 @@
                         android:foreground="?android:attr/selectableItemBackground"
                         android:scaleType="fitCenter"
                         android:src="@drawable/ic_right_arrow"
-                        app:neumorph_shapeType="pressed"
                         app:tint="#6F6E6E"
                         tools:ignore="UnusedAttribute" />
                 </LinearLayout>

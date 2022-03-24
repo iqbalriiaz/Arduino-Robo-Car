@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        final int[] clickCount = {0};
+       /* final int[] clickCount = {0};
         connectionStat.setOnClickListener(v ->
         {
             clickCount[0]++;
@@ -267,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-        });
+        });*/
 
 
         // If a bluetooth device has been selected from SelectDeviceActivity
