@@ -20,8 +20,7 @@ https://play.google.com/store/apps/details?id=com.robotechvalley.ArduinoRoboCar&
 - Light controlling
 - LEDs Controlling etc.
 
-Bluetooth Controller | Paired Bluetooth Devices | Button Values
-
+## Screenshots ✨
 
 Bluetooth Controller  |  Paired Bluetooth Devices |  Button Values
 :-------------------------:|:-------------------------:|:-------------------------:
