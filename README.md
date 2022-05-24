@@ -28,4 +28,4 @@ Bluetooth Controller | Paired Bluetooth Devices | Button Values
 
 Worldwide chart  |  country / province wise |  Map |  How To Stay Safe
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/1.jpeg)  |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/2.jpeg) |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/3.jpeg) |  ![image](https://github.com/GovindaPaliwal/NamasteCorona-coronavirus-tracker-android-app/blob/master/screens/four.png)
+![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/1.jpeg)  |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/2.jpeg) |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/3.jpeg)
