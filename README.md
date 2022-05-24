@@ -21,11 +21,8 @@ https://play.google.com/store/apps/details?id=com.robotechvalley.ArduinoRoboCar&
 - LEDs Controlling etc.
 
 Bluetooth Controller | Paired Bluetooth Devices | Button Values
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/1.jpeg)  |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/2.jpeg) |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/3.jpeg) 
 
 
-
-Worldwide chart  |  country / province wise |  Map
+Bluetooth Controller  |  Paired Bluetooth Devices |  Button Values
 :-------------------------:|:-------------------------:|:-------------------------:
 ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/1.jpeg)  |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/2.jpeg) |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/3.jpeg)
