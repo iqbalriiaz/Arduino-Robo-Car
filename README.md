@@ -20,6 +20,12 @@ https://play.google.com/store/apps/details?id=com.robotechvalley.ArduinoRoboCar&
 - Light controlling
 - LEDs Controlling etc.
 
-Bluetooth Controller  |  Paired Bluetooth Devices |  Button Values
+Bluetooth Controller | Paired Bluetooth Devices | Button Values
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/1.jpeg)  |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/2.jpeg) |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/3.jpeg)
+![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/1.jpeg)  |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/2.jpeg) |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/3.jpeg) 
+
+
+
+Worldwide chart  |  country / province wise |  Map |  How To Stay Safe
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![image](https://github.com/GovindaPaliwal/NamasteCorona-coronavirus-tracker-android-app/blob/master/screens/first.png)  |  ![image](https://github.com/GovindaPaliwal/NamasteCorona-coronavirus-tracker-android-app/blob/master/screens/second.png) |  ![image](https://github.com/GovindaPaliwal/NamasteCorona-coronavirus-tracker-android-app/blob/master/screens/three.png) |  ![image](https://github.com/GovindaPaliwal/NamasteCorona-coronavirus-tracker-android-app/blob/master/screens/four.png)
