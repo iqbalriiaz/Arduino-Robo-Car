@@ -11,8 +11,8 @@ https://play.google.com/store/apps/details?id=com.robotechvalley.ArduinoRoboCar&
 ## Feature ✨
 
 - Simple remote control interface
-- Robot mode (sends continuous data when the button is pressed and hold)
-- Car mode (sends single data on button press)
+- Robot mode (sends single data on button press)
+- Car mode (sends continuous data when the button is pressed and hold)
 
 ## Usage ✨
 - Home Automation System
