@@ -20,6 +20,6 @@ https://play.google.com/store/apps/details?id=com.robotechvalley.ArduinoRoboCar&
 - Light controlling
 - LEDs Controlling etc.
 
-
-
-![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/1.jpeg)  |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/2.jpeg) |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/3.jpeg) |
+Bluetooth Controller  |  Paired Bluetooth Devices |  Button Values
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/1.jpeg)  |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/2.jpeg) |  ![image](https://github.com/iqbalriiaz/Arduino-Robo-Car/blob/main/3.jpeg)
