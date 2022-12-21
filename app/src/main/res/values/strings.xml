@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Arduino Robo Car</string>
+    <string name="controller_tv">No Device Connected</string>
+    <string name="info_button_des">infoButtonIcon</string>
+    <string name="bluetooth_button_des">bluetoothIcon</string>
+    <string name="bluetooth_not_supported">bt_not_supp</string>
+    <string name="alert_title"><b>Button Values for Arduino</b></string>
+    <string name="button_values">
+
+        <font size="30">
+        <b>↑</b> = F \u0020\u0020 <b>↓</b> = B \u0020\u0020 <b>←</b> = L  \u0020\u0020 <b>→</b> = R \u0020\u0020 Stop = S
+        </font>
+
+        <font size="20">
+            \n\n<b>Robot Mode:</b> Single Button Value on Press.
+            \n<b>Car Mode:</b> Continuous Button Value on Press.
+        </font>
+
+    </string>
+
+
+</resources>
