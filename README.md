@@ -1,5 +1,7 @@
 # Arduino Robo Car
 
+## works till android 11/ need some permission update for android 12 and later)
+
 How cool is that when you can control your arduino based electrical devices in different ways using the <b>"Arduino Robo Car"</b> Application.
 
 The app allows you to control an Arduino-based car or robot or anything you made that has a Bluetooth module attached in it.
